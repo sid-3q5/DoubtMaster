@@ -1,0 +1,16 @@
+<form method="post" >  
+    {% csrf_token %}  
+      <h1 class="title">Register</h1>
+      <div>
+          <input type="text" name="username" placeholder="Username">
+      </div>
+      <div>
+          <input type="password" name="password" placeholder="Password" >
+      </div>
+      <div>
+          <input type="submit" value="Login"  class="submitBtn">
+      </div>
+      {% if error %}
+      <p>error</p>
+      {% endif %}
+  </form>

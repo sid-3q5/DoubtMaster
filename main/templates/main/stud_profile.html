@@ -1,0 +1,38 @@
+<h1>Student Page</h1>
+{{student.first_name}} {{student.last_name}} <br>
+{{profile.gender}} <br>
+{{profile.faculty}} 
+{{profile.country}} 
+
+<form method="post" >  
+    {% csrf_token %}  
+      <h1 class="title">Register</h1>
+      <div>
+          <input type="text" name="title" placeholder="Add Doubt">
+      </div>
+      <div>
+          <input type="text" name="description" placeholder="Description" >
+      </div>
+      <div>
+          <input type="submit" value="Add">
+      </div>
+      {% if error %}
+      <p>error</p>
+      {% endif %}
+  </form>
+
+
+  <br>
+  <hr>
+  <br>
+
+  <table>
+    {% for r in r %}
+            <tr>
+                <td>{{r.title}}</td>
+                <td>{{r.description}}</td>
+                <td>{{r.answer}}</td>
+            </tr>
+            
+    {% endfor %} 
+  </table>
