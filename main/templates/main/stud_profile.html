@@ -1,12 +1,87 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>student home page </title>
+    <link rel="stylesheet" href="{% static '/css/style2.css' %}" />
+
+</head>
+
+<body>
+    <div class="container">
+        <aside style="
+      margin-right: 15px;
+  ">
+            <div class="navbar">
+                <div class="user-logo"><img src="{% static '/images/sp.jpg' %}" /></div>
+                <nav>
+                    <ul>
+                        <li class="selectedLink" name="home">Home</li>
+                        <li name="about">About Me</li>
+                        <li name="resume">Payment History </li>
+                        <li ><a href={% url 'doubtlist' pk %}>Doubts List</a></li>
+                        <li ><a href="/logout">LogOut</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </aside>
+        <main>
+
+            <div class="card active home" data-home>
+                <div class="title">Student Home Page</div>
+                <div class="content"> </div>
+            </div>
+            <br>
+
+           <div>
+
+               <label for="subject" style="
+               font-size: 25px;">
+                   Add doubts
+               </label>
+           </div>
+
+           <form method="post" >  
+            {% csrf_token %}  
+              <div>
+                  <input type="text" name="title" placeholder="Add Doubt">
+              </div>
+              <div>
+                  <input type="text" name="description" placeholder="Description" >
+              </div>
+              <div>
+                <input type="submit" value="Submit" style="padding: 10px; ">
+                   </div>
+              {% if error %}
+              <p>error</p>
+              {% endif %}
+          </form>
+                
+
+        </main>
+    </div>
+  
+</body>
+
+</html>
+<!-- 
 <h1>Student Page</h1>
-{{student.first_name}} {{student.last_name}} <br>
-{{profile.gender}} <br>
-{{profile.faculty}} 
-{{profile.country}} 
+<div class="name">
+    Name : {{student.first_name}} {{student.last_name}} <br>
+Gender : {{profile.gender}} <br>
+{{profile.faculty}} <br>
+Country : {{profile.country}} <br> 
+State : {{profile.state}} <br> 
+Address : {{profile.address}} <br> 
+</div>
 
 <form method="post" >  
     {% csrf_token %}  
-      <h1 class="title">Register</h1>
+      <h1 class="title">ADD YOUR DOUBT/REQUIRED COURSE</h1>
       <div>
           <input type="text" name="title" placeholder="Add Doubt">
       </div>
@@ -27,12 +102,18 @@
   <br>
 
   <table>
+    <tr>
+        <th>TITLE</th>
+        <th>Status</th>
+    </tr>
     {% for r in r %}
             <tr>
-                <td>{{r.title}}</td>
-                <td>{{r.description}}</td>
+                <td><a href={% url 'doubt' r.id %}></a> <i class="fas fa-edit"></i>{{r.title}}</a></td>
                 <td>{{r.answer}}</td>
             </tr>
             
     {% endfor %} 
   </table>
+
+
+  <a href="/logout">LogOut</a> -->

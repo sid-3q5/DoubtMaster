@@ -41,8 +41,18 @@ class Teacher(models.Model):
 class Doubt(models.Model):
     title = models.CharField(max_length=30, null=True)
     description = models.CharField(max_length=200, null=True)
-    related = models.ForeignKey(Student, on_delete=models.CASCADE, blank=True, null=True)
+    related = models.ForeignKey(Student, on_delete=models.CASCADE)
     answer = models.CharField(max_length=10, choices= [("Answered","Answered"), ("Unanswered","Unanswered")], default='Unanswered')
 
     def __str__(self): 
         return self.title 
+
+class List(models.Model):
+    amount = models.IntegerField()
+    duration = models.IntegerField()
+    doubt = models.ForeignKey(Doubt, on_delete=models.CASCADE)
+    teacher = models.ForeignKey(Teacher, on_delete=models.CASCADE)
+    description = models.CharField(max_length=200, null=True)
+
+    def __str__(self): 
+        return self.description

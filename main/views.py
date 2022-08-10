@@ -10,10 +10,10 @@ from django.utils.http import urlsafe_base64_decode, urlsafe_base64_encode
 from django.template.loader import render_to_string
 from django.contrib.auth.models import User
 from .tokens import account_activation_token
-from django.core.mail import EmailMessage
+from django.core.mail import EmailMessage, send_mail
 from django.contrib.auth import get_user_model
 from django.contrib import auth
-from .models import Profile, Student, Teacher, Doubt
+from .models import Profile, Student, Teacher, Doubt, List
 from django.template.loader import render_to_string
 from django.urls import reverse
 
@@ -49,9 +49,12 @@ def signup(request):
             phone = form.cleaned_data.get('phone')
             gender = form.cleaned_data.get('gender')
             faculty = form.cleaned_data.get('faculty')
+            country = form.cleaned_data.get('country')
+            state = form.cleaned_data.get('state')
+            address = form.cleaned_data.get('address')
             fname = form.cleaned_data.get('first_name')
             lname = form.cleaned_data.get('last_name')
-            profile = Profile.objects.create(user=user, phone=phone, gender=gender, faculty=faculty)
+            profile = Profile.objects.create(user=user, phone=phone, gender=gender, faculty=faculty, country=country, state=state, address=address)
 
             if faculty == 'Tutor':
                 Tutor = Teacher.objects.create(teacher=user)
@@ -114,35 +117,120 @@ def stud_profile(request ,pk):
             description = request.POST['description']
             related = r
             doubt = Doubt.objects.create(title=title, description=description, related=related)
-            context={"student":student, "profile":profile, 'r':r1}
+            context={"student":student, "profile":profile, 'r':r1, 'r1':r}
             return render(request, 'main/stud_profile.html', context)
-        context={"student":student, "profile":profile, 'r':r1}
+        context={"student":student, "profile":profile, 'r':r1, 'pk':pk}
         return render(request, 'main/stud_profile.html', context)
+    else:
+        return redirect("login")
+
+def doubtlist(request, pk):
+    if  request.user.is_authenticated:
+        student = User.objects.get(pk=pk)
+        profile = Profile.objects.get(user=student)
+        std = Student.objects.get(student=student)
+        r1 = Doubt.objects.filter(related=std.id)
+        context={"student":student, "profile":profile, 'r':r1}
+        return render(request, 'main/doubtlist.html', context)
     else:
         return redirect("login")
 
 def teacher_profile(request ,pk):
     if  request.user.is_authenticated:
-        teacher = User.objects.get( pk=pk)
+        teacher = User.objects.get(pk=pk)
         profile = Profile.objects.get(user=teacher)
-        l = Student.objects.values_list('student_id')
-        c = Student.objects.count()
-        stud = User.objects.all()
-        pr = Profile.objects.all()
-        # du = zip(pr,stud)
-        context={"teacher":teacher, "profile":profile}
+        tech = Teacher.objects.get(teacher=teacher)
+        r = Doubt.objects.filter(answer='Unanswered').values()
+        context={"teacher":teacher, "profile":profile, "r":r}
         return render(request, 'main/teacher.html', context)
-
     else:
         return redirect("login") 
 
-# def doubt(request, pk):
-#     if  request.user.is_authenticated:
-#         student = User.objects.get( pk=pk)
-#         profile = Profile.objects.get(user=student)
-#         r = Doubt.objects.filter(related=profile.id)
-#         context={"student":student, "profile":profile, "r":r}
-#         return render(request, 'main/doubtadd.html', context)    
-#     else:
-#         return redirect("login")  
+def doubt(request,pk):
+    if  request.user.is_authenticated:
+        r = Doubt.objects.get( pk=pk )
+        l = List.objects.filter(doubt=pk)
+        context={"r":r, "l":l}
+        return render(request, 'main/doubt.html', context)
+    else:
+        return redirect("login")      
+
+def test1(request,pk):
+    if  request.user.is_authenticated:
+        r = Doubt.objects.get( pk=pk )
+        pf = request.user.id
+        teach = User.objects.get(pk=pf)
+        teacher = Teacher.objects.get(teacher=teach)
+        k = List.objects.filter(teacher=teacher, doubt=r)
+        if k.exists():
+            # ALREADY EXIST
+            already_exist = True
+            
+            context={"r":r,"already_exist":already_exist}
+            return render(request, 'main/tech_doubt.html', context)
+        else:
+            if request.method == 'POST':
+                amount = request.POST['amount']
+                description = request.POST['description']
+                duration = request.POST['duration']
+                pf = request.user.id
+                teach = User.objects.get(pk=pf)
+                teacher = Teacher.objects.get(teacher=teach)
+                list1 = List.objects.create(amount=amount, description=description, duration=duration, doubt=r, teacher=teacher)
+                context={"r":r}
+                return render(request, 'main/tech_doubt.html', context)
+        context={"r":r}
+        if request.method == 'POST':
+            amount = request.POST['amount']
+            description = request.POST['description']
+            duration = request.POST['duration']
+            pf = request.user.id
+            teach = User.objects.get(pk=pf)
+            teacher = Teacher.objects.get(teacher=teach)
+            list1 = List.objects.create(amount=amount, description=description, duration=duration, doubt=r, teacher=teacher)
+            context={"r":r}
+            return render(request, 'main/tech_doubt.html', context)
+        
+        return render(request, 'main/tech_doubt.html', context)
+    else:
+        return redirect("login")    
+
+def test2(request,pk):
+    if  request.user.is_authenticated:
+        r = List.objects.get( pk=pk )
+        context={"r":r}
+        return render(request, 'main/offered.html', context)
     
+    else:
+        return redirect("login")  
+
+def pay(request,pk):
+    if  request.user.is_authenticated:
+        r = List.objects.get( pk=pk )
+        
+        if request.method == 'POST':
+            confirm = request.POST['confirm']
+            if confirm == 'Yes' or confirm == 'yes':
+                r = List.objects.get( pk=pk )
+                ids = r.doubt.id
+                idt = r.teacher.id
+                rate = r.teacher.rating
+                g = Doubt(id=ids, answer='Answered')
+                g1 = Teacher(id=idt, rating=rate+10)
+                g.save(update_fields=['answer'])
+                g1.save(update_fields=['rating'])
+                context={"r":r}
+                return render(request, 'main/offered.html', context)
+            else:
+                err = 'Type Correctly'
+                context={"r":r, "err":err}
+                return render(request, 'main/payment.html', context)
+        context={"r":r}
+        return render(request, 'main/payment.html', context)
+    
+    else:
+        return redirect("login")  
+
+def logout(request):
+    auth.logout(request)
+    return redirect("/") 

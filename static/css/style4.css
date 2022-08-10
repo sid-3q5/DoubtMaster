@@ -1,0 +1,73 @@
+*{
+    margin: 0%;
+    padding: 0%;
+    font-family: cursive;
+}
+
+
+
+.container1{
+    width:1000px ;
+    height:100% ;
+    left: 15%;
+    top: 100%;
+    position: absolute;
+    border-radius: 30px;
+    border: 1px;
+    background-color:#eee;
+    padding: 20px 30px;
+    box-shadow: 10px 6px rgb(39, 47, 48);
+    overflow: scroll;
+}
+
+h1{
+    color:#3a4f50 ;
+    background-color: #0ef6cc;
+    text-align: center;
+}
+
+.doubt{
+    width: 600px;
+    height: 128px;
+    background-color:  #3a4f50;
+    color: #eee;
+    left: 15%;
+    top: 20%;
+    position:relative;
+    margin: 30px 0px;
+    font-size: larger;
+    /* border-radius: 40px; */
+    text-align: center;
+    box-shadow: 10px 6px rgb(39, 47, 48);
+    
+    
+
+}
+.doubt p{
+    margin-top: 20px;
+    margin-left: 10px;
+    text-align: left;
+    font-size: smaller;
+}
+
+.doubt a button{
+    margin-left: 350px;
+    width: 150px;
+    height: 30px;
+    border-radius: 30px;
+    cursor: pointer;
+}
+
+.doubt a .but:hover{
+    transition: ease-out 0.5s;
+    z-index: 1;
+    background-color: rgb(41, 40, 40);
+    cursor: pointer;
+    color: antiquewhite;
+}
+
+hr{
+    width: 80%;
+    margin-left:60px ;
+   height: 0%;
+}

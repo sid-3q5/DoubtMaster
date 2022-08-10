@@ -1,0 +1,15 @@
+Are You sure to pay?
+
+<form method="post" >  
+    {% csrf_token %}  
+      <div>
+          <input type="text" name="confirm" placeholder="Type 'Yes' to confirm">
+      </div>
+      <div>
+          <input type="submit" value="YEs">
+      </div>
+  </form>
+
+  {{err}}
+
+  <a href="/logout">LogOut</a>

@@ -1,4 +1,73 @@
-<h1>Tutor Page</h1>
-{{profile.gender}} <br>
-{{profile.faculty}} <br>
-{{profile.country}} 
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static '/css/style4.css' %}">
+    <link rel="stylesheet" href="{% static '/css/style2.css' %}">
+</head>
+
+<body>
+  <div class="container">
+    <aside style="
+  margin-right: 15px;
+">
+        <div class="navbar">
+            <div class="user-logo"><img src="{% static '/images/sp.jpg' %}" /></div>
+            <nav>
+                <ul>
+                    <li class="selectedLink" name="home">Home</li>
+                    <li name="about">About Me</li>
+                    <li><a href="#doubtList">Doubts</a> </li>
+                    <li ><a href="/logout">LogOut</a></li>
+                </ul>
+            </nav>
+        </div>
+    </aside>
+    <main>
+
+        <div class="card active home" data-home>
+            <div class="title">{{teacher.first_name}} {{teacher.last_name}}</div>
+            <div class="content"> {{profile.faculty}}</div>
+            <div class="content">Gender : {{profile.gender}}</div>
+            <div class="content">Country : {{profile.country}}</div>
+            
+        </div>
+        <br>
+
+       <div>
+
+           <label for="subject" style="
+           font-size: 25px;">
+             Offer Courses
+           </label>
+       </div>
+
+      
+
+    </main>
+</div>
+
+
+    <div class="container1" id="doubtList">
+    <h1>Student's Doubts to be answered</h1>
+    {% for r in r %}
+    <div class="doubt">
+          <p1>{{r.title}}</p1>
+          <hr>
+          <p>Description : {{r.description}}</p>
+          <p>Status : {{r.answer}}</p>
+          <a href={% url 'tech_doubt' r.id %}>
+            <button class="but" type="button"><span></span> Offer your Course</button>
+          </a>
+          
+        </div>
+        {% endfor %} 
+      </div>
+</body>
+
+</html>

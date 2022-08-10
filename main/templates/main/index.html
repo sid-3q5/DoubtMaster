@@ -1,1 +1,134 @@
-<p>LOGIN OR REGISTER</p>
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doubt Master</title>
+    <link rel="stylesheet" href="{% static '/css/style.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+        integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="icon" href="{% static '/images/logo.jpg' %}">
+
+</head>
+
+<!-- <body>
+    
+</body> -->
+
+<body>
+    <!-- <video autoplay muted loop >
+        <source src="background1.mp4" type="video/mp4">
+    </video> -->
+    <div class="banner">
+        <!-- <video autoplay muted loop >
+            <source src="background1.mp4" type="video/mp4">
+        </video> -->
+        <div class="navbar">
+            <img src="{% static '/images/logo.jpg' %}" class="logo" alt="">
+            <ul>
+                <li><a href="#Jump1">Login</a></li>
+                <li><a href="../register">Register</a></li>
+                <li><a href="#Jump2">About</a></li>
+                <li><a href="#Jump3">Contact us</a></li>
+            </ul>
+        </div>
+        <div class="discription">
+            <h1>Have a doubt ? </h1>
+            <h2>Just get it resolved by interacting with tutors all over the world in simple and easy way !!</h2>
+            <p>Ask your doubts from assignment , projects and so on .....</p>
+            <p>And Get the course offered for tutors all over the world !!</p>
+        </div>
+    </div>
+    <div>
+        <div class="split left">
+            <div class="centered">
+                <img src="{% static '/images/teacher.jpg' %}" alt="Teacher Avatar" class=" centered ">
+                <a href="../login">
+                    <button id="Jump1" type="button"><span></span>Tutor</button>
+                </a>
+            </div>
+        </div>
+        
+        
+        <div class="split right">
+            <div class="centered">
+                <img src="{% static '/images/student.jpg' %}" alt="Student Avatar" class="centered">
+                <a href="../login">
+                    <button id="Jump1" type="button"> <span></span> Student</button>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div>
+        
+        <div class="contact">
+            <!-- <div>Yash Dhoot</div> -->
+            <h1>Signed in as ?</h1>
+            
+            <p> .....................................................................................................................................................................................................................................................................................................................................................................................................................................................................
+            </p>
+            
+        </div>
+        
+        <hr>
+        <footer>
+
+            
+
+            <section class="footer">
+                <p>Connect with Doubt Master at different social media and interact with best tutors all over the world </p>
+                <div class="social">
+                    <a href="mailto: doubtmastera@gmail.com"><i class="fa fa-envelope"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-facebook "></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+
+                </div>
+                <ul class="list1" id="Jump2">
+                    <li>
+                        <a href="mailto: doubtmastera@gmail.com">Email </a>
+                    </li>
+
+                    <li>
+                        <a href="#">Instagram</a>
+                    </li>
+                    <li>
+                        <a href="#">Facebook</a>
+                    </li>
+                    <li>
+                        <a href="#">Twitter</a>
+                    </li>
+                </ul>
+
+                <hr>
+
+                <!-- <ul class="list2" id="Jump3">
+                    <p>Doubt Master : Designed by </p>
+                    <li>
+                        <a href="#">Yash Dhoot </a>
+                    </li>
+
+                    <li>
+                        <a href="#">Siddhant Chauhan</a>
+                    </li>
+                    <li>
+                        <a href="#">Raj Rathi</a>
+                    </li>
+                </ul> -->
+            </section>
+        </footer>
+        
+
+        <hr>
+
+
+
+
+
+</body>
+
+</html>

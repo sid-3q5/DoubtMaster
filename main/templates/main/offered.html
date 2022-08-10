@@ -1,0 +1,18 @@
+{{r.amount}}
+<br>
+DOUBT ID :
+{{r.doubt.id}}
+<br>
+{{r.description}}<br>
+{{r.duration}}<br>
+{{r.teacher}}<br>
+{{r.teacher.rating}}<br>
+ 
+{% if r.doubt.answer == "Unanswered" %}
+    <button><a href={% url 'payment' r.id %}>PAY </a></button>
+{% else %}
+    <h1>Already Applied to course !!</h1>
+{% endif %}
+
+
+<a href="/logout">LogOut</a>

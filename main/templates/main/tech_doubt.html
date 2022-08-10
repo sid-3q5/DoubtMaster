@@ -1,0 +1,68 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static '/css/style5.css' %}">
+    <link rel="stylesheet" href="{% static '/css/style6.css' %}">
+</head>
+
+<body>
+    
+    <div class="in">
+        <caption>YOUR COURSES/DOUBTS LIST STATUS : </caption>
+        <table class="Coursedetails">
+            <thead>
+            <tr>
+                <th>Sr no.</th>
+                <th>Course/Doubts description</th>
+                <th>Status</th>
+    
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>{{r.title}}</td>
+                <td>{{r.description}}</td>
+                <td>{{r.answer}}</td>
+            </tr>
+        </tbody>
+        </table>
+        <h3>Uploaded By : {{r.related}}</h3>    
+    </div>
+
+    <div class="title">
+        {% if r.answer == "Unanswered" %}
+        {% if already_exist %}
+        <h1>Already Offered !!</h1>
+        {% else %}
+        <form method="post" >  
+                    <h1>Offer your course</h1>
+                    {% csrf_token %}  
+                    <div class="inputbox">
+                        <input type="text" name="amount" placeholder="Amount (in INR)" required>
+                    </div>
+                    <div class="inputbox">
+                        <input type="text" name="description" placeholder="Description" required>
+                    </div>
+                    <div class="inputbox">
+                        <input type="text" name="duration" placeholder="Duration (in weeks)" required>
+                    </div>
+                    <input type="submit"  class="btn" value="Offer">
+                    {% if error %}
+                    <p>error</p>
+                    {% endif %}
+                </form>
+                {% endif %}
+        {% else %}
+            <h1>Already Applied to course !!</h1>
+        {% endif %}
+
+    </div>
+    <a href="/logout">LogOut</a>
+
+</body>

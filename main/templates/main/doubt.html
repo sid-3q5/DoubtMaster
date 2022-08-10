@@ -1,0 +1,61 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static '/css/style6.css' %}">
+</head>
+<body>
+    <caption>YOUR COURSES/DOUBTS LIST STATUS : </caption>
+    <table class="Coursedetails">
+        <thead>
+        <tr>
+            <th>Sr no.</th>
+            <th>Course/Doubts description</th>
+            <th>Status</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>{{r.title}}</td>
+            <td>{{r.description}}</td>
+            <td>{{r.answer}}</td>
+        </tr>
+    </tbody>
+    </table>
+
+
+
+<caption>OFFERED COURSES : </caption>
+    <table class="Offerdetails">
+        <thead>
+        <tr>
+            <th>Sr no.</th>
+            <th>Course/Doubts description</th>
+            <th>Duration</th>
+            <th>Amount</th>
+            <th>Offered by</th>
+            <th>            </th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for l in l %}
+        <tr>
+            <td>{{l.amount}}</td>
+            <td>{{l.description}}</td>
+            <td>{{l.duration}}</td>
+            <td>{{l.teacher}}</td>
+            <td><a href={% url 'offered' l.id %}><button>Apply</button></a></td>
+        </tr>
+    
+    {% endfor %} 
+    </tbody>
+    </table>
+    <a href="/logout">LogOut</a>
+</body>
+</html>
+

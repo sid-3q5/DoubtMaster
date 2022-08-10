@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 
 from pathlib import Path
-import os
+import os,socket
 from django.contrib.messages import constants as message_constants
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -27,8 +27,9 @@ SECRET_KEY = 'django-insecure-g8oan7vb_^kx@ud$!b#)#&rm-b%k1bxb)^!lh-tjp49irrx!7*
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost','127.0.0.1']
+ALLOWED_HOSTS = ['127.0.0.1']
 
+# socket.getaddrinfo('127.0.0.1',8000)
 
 # Application definition
 

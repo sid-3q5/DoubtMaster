@@ -1,0 +1,343 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Righteous&display=swap');
+/* font-family: 'Righteous', cursive; */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;500;900&display=swap');
+/* font-family: 'Poppins', sans-serif; */
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@700&display=swap');
+/* font-family: 'Work Sans', sans-serif; */
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@300&display=swap');
+/* font-family: 'Ubuntu', sans-serif; */
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@500&display=swap');
+/* font-family: 'Roboto Slab', serif; */
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap');
+/* font-family: 'Open Sans', sans-serif; */
+@import url('https://fonts.googleapis.com/css2?family=IM+Fell+DW+Pica+SC&display=swap');
+/* font-family: 'IM Fell DW Pica SC', serif; */
+@import url('https://fonts.googleapis.com/css2?family=Yanone+Kaffeesatz:wght@300&display=swap');
+/* font-family: 'Yanone Kaffeesatz', sans-serif; */
+
+*{
+    margin : 0;
+    padding : 0;
+    font-family: Clash Display , General Sans;
+}
+
+.banner{
+    width : 100%;
+    height : 100vh;
+    /* background-image: linear-gradient(rgba(0,0,0,0.75),rgba(0,0,0,0.75)) url(logo.jpg);  */
+    /* background-size: cover; */
+    background-position: center;
+}
+
+.fixedbg{
+    /* background-image: url(image.jpg); */
+    background-size:auto ;
+    background-position: fixed;
+    /* background-repeat: no-repeat; */
+}
+
+.navbar{
+    width: 100%;
+    margin: auto;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: black;
+    
+}
+
+.logo{
+    width: 200px;
+    cursor: pointer;
+}
+
+.navbar ul li{
+    list-style: none;
+    display:inline-block;
+    margin: 0 20px;
+    position: relative;
+
+    
+}
+
+.navbar ul li a{
+    text-decoration: none;
+    color: #f4eff4 ;
+    text-shadow: #0ef6cc;
+    font-family: 'IM Fell DW Pica SC', serif;
+}
+
+.navbar ul li::after{
+    content: '';
+    height: 3px;
+    width: 0;
+    background: #0EF6CC;
+    position: absolute;
+    left: 0;
+    bottom: -10px;
+    transition: 0.5s;
+}
+
+.navbar ul li:hover::after{
+    width: 100%;
+    
+}
+
+.discription{
+    width: 100%;
+    position: absolute;
+    padding: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    text-align: center;
+    color:rgb(50, 49, 49);
+    /* background-color:#3a4f50; */
+}
+
+.discription h1{
+    font-size: 50px;
+    margin-top: 80px;
+    color: #76549A;
+    font-family: 'Work Sans', sans-serif; 
+}
+
+.discription h2{
+    font-family: 'Ubuntu', sans-serif;
+    margin-top: 80px;
+    color: #495C83;
+}
+
+.discription p{
+    font-family: 'Ubuntu', sans-serif;
+    margin: 20px auto;
+    font-weight: 100;
+    color: #7A4069;
+}
+
+button{
+    width: 200px;
+    padding: 15px 0;
+    margin: 20px 10px;
+    text-align: center;
+    color: #3a4f50;
+    border-radius: 25px;
+    font-weight: bold;
+    border: 2px solid #f4eff4;
+    /* background: transparent; */
+    cursor: pointer;
+    position: relative; 
+    overflow: hidden;
+    
+}
+
+span{
+    background: #0EF6CC;
+    width: 0;
+    height: 100%;
+    border-radius: 25px;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    z-index: -1;
+    transition: 0.8s;
+
+}
+
+botton:hover span{
+    width: 100%;
+
+}
+
+botton:hover{
+    border: none;
+
+}
+
+/* .contact {
+    background-image: url(background.jpg); 
+     background-color:wheat;
+} */
+
+
+
+ split {
+    background: url(patternpad.svg);
+    height: 100%;
+    width: 50%;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    overflow-x: hidden;
+    padding-top: 20px;
+  }
+  
+  /* Control the left side */
+  .left {
+    left: 0;
+    width: 50%;
+    width: 210px;
+    margin: 200px;
+    padding: 20px;
+    float: left;
+    border-radius: 25px;
+    border-image: #f4f4f4;
+    background-color: #0EF6CC;
+  }
+  
+  /* Control the right side */
+  .right {
+
+    right: 0;
+    width: 50%;
+    width: 210px;
+    margin: 200px;
+    padding: 20px;
+    border-radius: 25px;
+    float: right;
+    border-image: #f4f4f4;
+    background-color: #0EF6CC;
+  }
+  
+
+  
+   /* Style the image inside the centered container, if needed */
+  .centered img {
+    width: 200px;
+    border-radius: 50%;
+    
+  }
+  
+
+
+
+body{
+    background-image: url(/static/images/wave1.svg);
+    background-size: cover;
+    /* background-color: gray; */
+    background-attachment: fixed;
+    /* background-color:#0ef6cc; */
+    background-repeat: no-repeat;
+}
+
+
+/* .footer{
+    background-color: #3a4f50;
+} */
+
+.footer .social{
+    text-align: center;
+    padding: 25px;
+    color:black;
+   height: 50px;
+
+}
+.footer p{
+    padding-top: 20px;
+    text-align: center;
+    font-size: 22px;
+    background-color: #3a4f50;
+}
+
+.footer .list2 p{
+    
+    text-align: center;
+    font-size: 22px;
+    background-color: black;
+}
+
+.footer .social a{
+    font-size: 24px;
+    color: inherit;
+    border: 4px solid #e9efef;
+    width: 40px;
+    height: 40px;
+    line-height: 38px;
+    display: inline-block;
+    text-align: center;
+    border-radius: 50%;
+    margin: 0 20px;
+    opacity: 0.75;
+    background-color: #3a4f50;
+
+}
+
+.footer .social a:hover{
+    opacity: 1.5;
+    color: #0ef6cc;
+    transform: translate(0 , -10px);
+}
+
+.footer ul{
+    margin-top: 0;
+    padding: 0;
+    list-style: none;
+    font-size: 18px;
+    line-height: 1.6;
+    margin-bottom: 0;
+    text-align: center;
+    color: white;
+    background-color: #3a4f50;
+
+
+}
+
+
+.footer ul li a{
+    color: inherit;
+    text-decoration: none;
+    opacity: 0.9;
+}
+
+
+.footer ul li a:hover{
+    opacity: 1.3;
+    color: #0EF6CC;
+}
+
+
+.footer ul li {
+    display: inline-block;
+    padding: 10px;
+    /* margin: 50px; */
+    color: #e9efef;
+}
+
+.footer .list2 ul li {
+    display: inline-block;
+    padding: 0 15px;
+    margin: 50px;
+    color: #e9efef;
+    height: 200px;
+}
+
+
+
+.footer .list2{
+    background-color: black;
+}
+
+
+/* .footer .list2 ul  li {
+    display: inline-block;
+    padding: 0 15px;
+    margin: 100px;
+    background-color: black;
+    height: 200px;
+} */
+
+
+
+
+.social{
+    background-color:#3a4f50;
+}
+
+
+.footer{
+    width: 100%;
+}
+
+
+
